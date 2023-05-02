@@ -70,7 +70,7 @@ class HomeScreen extends ConsumerWidget {
                           SquareButton(
                             color: Colors.redAccent.withOpacity(0.2),
                             text: Column(
-                              children: [
+                              children: const [
                                 Icon(Icons.keyboard, size: 15),
                                 Text(
                                   'Text Input',
