@@ -10,5 +10,8 @@ class SpeechToTextResponseState with _$SpeechToTextResponseState {
 
     ///
     @Default('') String question,
+
+    ///
+    @Default(false) bool textFieldFocus,
   }) = _SpeechToTextResponseState;
 }

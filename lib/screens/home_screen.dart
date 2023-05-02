@@ -38,9 +38,8 @@ class HomeScreen extends ConsumerWidget {
 
     final speechToTextState = ref.watch(speechToTextProvider);
 
-    textEditingController.text = speechToTextState.question;
-
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -71,7 +70,7 @@ class HomeScreen extends ConsumerWidget {
                           SquareButton(
                             color: Colors.redAccent.withOpacity(0.2),
                             text: Column(
-                              children: const [
+                              children: [
                                 Icon(Icons.keyboard, size: 15),
                                 Text(
                                   'Text Input',
@@ -79,11 +78,22 @@ class HomeScreen extends ConsumerWidget {
                                 ),
                               ],
                             ),
+                            onTap: () {
+                              _ref
+                                  .watch(speechToTextProvider.notifier)
+                                  .setTextFieldFocus();
+                            },
                           ),
                           const SizedBox(width: 10),
                           Expanded(
                             child: TextField(
+                              autofocus: speechToTextState.textFieldFocus,
                               controller: textEditingController,
+                              onChanged: (value) {
+                                _ref
+                                    .watch(speechToTextProvider.notifier)
+                                    .setQuestion(question: value);
+                              },
                             ),
                           ),
                         ],

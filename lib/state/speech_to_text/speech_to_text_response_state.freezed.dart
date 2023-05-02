@@ -22,6 +22,9 @@ mixin _$SpeechToTextResponseState {
   ///
   String get question => throw _privateConstructorUsedError;
 
+  ///
+  bool get textFieldFocus => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $SpeechToTextResponseStateCopyWith<SpeechToTextResponseState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -33,7 +36,7 @@ abstract class $SpeechToTextResponseStateCopyWith<$Res> {
           $Res Function(SpeechToTextResponseState) then) =
       _$SpeechToTextResponseStateCopyWithImpl<$Res, SpeechToTextResponseState>;
   @useResult
-  $Res call({bool isListening, String question});
+  $Res call({bool isListening, String question, bool textFieldFocus});
 }
 
 /// @nodoc
@@ -52,6 +55,7 @@ class _$SpeechToTextResponseStateCopyWithImpl<$Res,
   $Res call({
     Object? isListening = null,
     Object? question = null,
+    Object? textFieldFocus = null,
   }) {
     return _then(_value.copyWith(
       isListening: null == isListening
@@ -62,6 +66,10 @@ class _$SpeechToTextResponseStateCopyWithImpl<$Res,
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
+      textFieldFocus: null == textFieldFocus
+          ? _value.textFieldFocus
+          : textFieldFocus // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -75,7 +83,7 @@ abstract class _$$_SpeechToTextResponseStateCopyWith<$Res>
       __$$_SpeechToTextResponseStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isListening, String question});
+  $Res call({bool isListening, String question, bool textFieldFocus});
 }
 
 /// @nodoc
@@ -93,6 +101,7 @@ class __$$_SpeechToTextResponseStateCopyWithImpl<$Res>
   $Res call({
     Object? isListening = null,
     Object? question = null,
+    Object? textFieldFocus = null,
   }) {
     return _then(_$_SpeechToTextResponseState(
       isListening: null == isListening
@@ -103,6 +112,10 @@ class __$$_SpeechToTextResponseStateCopyWithImpl<$Res>
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
+      textFieldFocus: null == textFieldFocus
+          ? _value.textFieldFocus
+          : textFieldFocus // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -111,7 +124,9 @@ class __$$_SpeechToTextResponseStateCopyWithImpl<$Res>
 
 class _$_SpeechToTextResponseState implements _SpeechToTextResponseState {
   const _$_SpeechToTextResponseState(
-      {this.isListening = false, this.question = ''});
+      {this.isListening = false,
+      this.question = '',
+      this.textFieldFocus = false});
 
   ///
   @override
@@ -123,9 +138,14 @@ class _$_SpeechToTextResponseState implements _SpeechToTextResponseState {
   @JsonKey()
   final String question;
 
+  ///
+  @override
+  @JsonKey()
+  final bool textFieldFocus;
+
   @override
   String toString() {
-    return 'SpeechToTextResponseState(isListening: $isListening, question: $question)';
+    return 'SpeechToTextResponseState(isListening: $isListening, question: $question, textFieldFocus: $textFieldFocus)';
   }
 
   @override
@@ -136,11 +156,14 @@ class _$_SpeechToTextResponseState implements _SpeechToTextResponseState {
             (identical(other.isListening, isListening) ||
                 other.isListening == isListening) &&
             (identical(other.question, question) ||
-                other.question == question));
+                other.question == question) &&
+            (identical(other.textFieldFocus, textFieldFocus) ||
+                other.textFieldFocus == textFieldFocus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isListening, question);
+  int get hashCode =>
+      Object.hash(runtimeType, isListening, question, textFieldFocus);
 
   @JsonKey(ignore: true)
   @override
@@ -153,7 +176,8 @@ class _$_SpeechToTextResponseState implements _SpeechToTextResponseState {
 abstract class _SpeechToTextResponseState implements SpeechToTextResponseState {
   const factory _SpeechToTextResponseState(
       {final bool isListening,
-      final String question}) = _$_SpeechToTextResponseState;
+      final String question,
+      final bool textFieldFocus}) = _$_SpeechToTextResponseState;
 
   @override
 
@@ -163,6 +187,10 @@ abstract class _SpeechToTextResponseState implements SpeechToTextResponseState {
 
   ///
   String get question;
+  @override
+
+  ///
+  bool get textFieldFocus;
   @override
   @JsonKey(ignore: true)
   _$$_SpeechToTextResponseStateCopyWith<_$_SpeechToTextResponseState>
