@@ -38,6 +38,10 @@ class HomeScreen extends ConsumerWidget {
 
     final speechToTextState = ref.watch(speechToTextProvider);
 
+    if (speechToTextState.speechFlag) {
+      textEditingController.text = speechToTextState.question;
+    }
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -79,6 +83,8 @@ class HomeScreen extends ConsumerWidget {
                               ],
                             ),
                             onTap: () {
+                              textEditingController.text = '';
+
                               _ref
                                   .watch(speechToTextProvider.notifier)
                                   .setTextFieldFocus();
@@ -121,6 +127,10 @@ class HomeScreen extends ConsumerWidget {
                                         await speechToText.initialize();
 
                                     if (available) {
+                                      await ref
+                                          .watch(speechToTextProvider.notifier)
+                                          .setSpeechFlag();
+
                                       await ref
                                           .watch(speechToTextProvider.notifier)
                                           .setListening();
@@ -275,7 +285,13 @@ class HomeScreen extends ConsumerWidget {
                                     ),
                                   ],
                                 ),
-                                onTap: () => flutterTts.stop(),
+                                onTap: () async {
+                                  await _ref
+                                      .watch(speechToTextProvider.notifier)
+                                      .clearSpeechFlag();
+
+                                  flutterTts.stop();
+                                },
                               ),
                             ],
                           ),
@@ -332,6 +348,8 @@ class HomeScreen extends ConsumerWidget {
 
   ///
   Future<void> answerSpeak() async {
+    await _ref.watch(speechToTextProvider.notifier).clearSpeechFlag();
+
     final chatgptAnswerState = _ref.watch(chatgptAnswerProvider);
 
     await flutterTts.setLanguage('ja-JP'); // 言語

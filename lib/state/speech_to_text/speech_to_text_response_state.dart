@@ -13,5 +13,8 @@ class SpeechToTextResponseState with _$SpeechToTextResponseState {
 
     ///
     @Default(false) bool textFieldFocus,
+
+    ///
+    @Default(false) bool speechFlag,
   }) = _SpeechToTextResponseState;
 }

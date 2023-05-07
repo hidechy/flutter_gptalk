@@ -29,6 +29,14 @@ class SpeechToTextNotifier extends StateNotifier<SpeechToTextResponseState> {
   ///
   Future<void> setTextFieldFocus() async =>
       state = state.copyWith(textFieldFocus: true);
+
+  ///
+  Future<void> setSpeechFlag() async =>
+      state = state.copyWith(speechFlag: true);
+
+  ///
+  Future<void> clearSpeechFlag() async =>
+      state = state.copyWith(speechFlag: false);
 }
 
 ////////////////////////////////////////////////
